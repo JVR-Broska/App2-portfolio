@@ -39,5 +39,5 @@ with col4:
     for index, row in df[10:20].iterrows():
         st.header(row['title'])
         st.write(row['description'])
+        st.image(f"images/{row['image']}")
         st.write(f"[Source Code]({row['url']})")
-        st.write(row['url'])
