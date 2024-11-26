@@ -1,6 +1,6 @@
 import smtplib, ssl
 
-def subimit_email(user_email, message):
+def subimit_email(user_email, subject, message):
     host = "smtp.gmail.com"
     port = 465
     password = "uzak expe maxr ivik"
@@ -12,11 +12,14 @@ def subimit_email(user_email, message):
 
     Kind regards"""
 
+    processed_message = f"""Subject: {subject}.
+    \n{message}\n\nMessage by {user_email}
+    """
 
     with smtplib.SMTP_SSL(host=host, port=port, context=context) as server:
         server.login(service_email, password)
         # Receiving email feedback
-        server.sendmail(service_email, service_email, message)
+        server.sendmail(service_email, service_email, processed_message)
 
-        # Answering feedback
-        server.sendmail(service_email, user_email, service_message)
+"""        # Answering feedback
+        server.sendmail(service_email, user_email, service_message)"""
